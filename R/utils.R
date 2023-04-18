@@ -38,3 +38,40 @@ gglabels <- function(plot, title = NULL, x_label = NULL, y_label = NULL) {
 
   return(plot)
 }
+
+base_format <- function(plot,
+                        grid_by,
+                        title,
+                        x_label,
+                        y_label,
+                        x_angle,
+                        with_legend,
+                        font_size,
+                        horizontal) {
+  plot <- gglabels(plot, title = title, x_label = x_label, y_label = y_label)
+
+  if (!is.null(grid_by)) {
+    # scales = "free" remove empty factors
+    plot <- plot + facet_grid(
+      as.formula(sprintf("~ %s", grid_by)),
+      scales = "free",
+      space = "free"
+    )
+  }
+
+  if (horizontal) {
+    plot <- plot + coord_flip()
+  }
+
+  plot <- theme_publication(plot, font_size)
+
+  if (!with_legend) {
+    plot <- plot + theme(legend.position = "none")
+  }
+
+  if (x_angle != 0) {
+    plot <- plot + rotate_x(x_angle)
+  }
+
+  return(plot)
+}
