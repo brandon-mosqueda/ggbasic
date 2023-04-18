@@ -81,6 +81,7 @@ gghist <- function(data,
   ))
 }
 
+#' @export
 ggbox <- function(data,
                   x,
                   fill_by = NULL,
@@ -118,6 +119,47 @@ ggbox <- function(data,
     y_label = NULL,
     grid_by = grid_by,
     x_angle = 0,
+    with_legend = with_legend,
+    font_size = font_size,
+    horizontal = horizontal
+  ))
+}
+
+#' @export
+ggscatter <- function(data,
+                      x,
+                      y,
+                      fill_by = NULL,
+                      grid_by = NULL,
+
+                      title = NULL,
+                      x_label = NULL,
+                      y_label = NULL,
+
+                      fill_color = "#386cb0",
+                      point_size = 2,
+                      font_size = 18,
+                      x_angle = 0,
+                      with_legend = TRUE,
+                      horizontal = FALSE) {
+  if (is.null(fill_by)) {
+    plot <- ggplot(data, aes(x = .data[[x]], y = .data[[y]])) +
+      geom_point(stat = "identity", size = point_size, color = fill_color)
+  } else {
+    plot <- ggplot(
+      data,
+      aes(x = .data[[x]], y = .data[[y]], color = .data[[fill_by]])
+    ) +
+    geom_point(stat = "identity", size = point_size)
+  }
+
+  return(base_format(
+    plot = plot,
+    title = title,
+    x_label = x_label,
+    y_label = y_label,
+    grid_by = grid_by,
+    x_angle = x_angle,
     with_legend = with_legend,
     font_size = font_size,
     horizontal = horizontal
