@@ -1,5 +1,6 @@
 #' @import ggplot2
 
+#' @export
 save_plot <- function(Plot, file, width = 35, height = 20, units = "cm", ...) {
   background <- NULL
   if ("transparent" %in% class(Plot)) {
