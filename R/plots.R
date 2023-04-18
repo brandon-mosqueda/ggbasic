@@ -10,6 +10,7 @@ ggbars <- function(data,
                    fill_by = x,
                    grid_by = NULL,
 
+                   title = NULL,
                    x_label = NULL,
                    y_label = NULL,
 
@@ -25,12 +26,7 @@ ggbars <- function(data,
       geom_col(position = position_dodge(width = 0.92))
   }
 
-  if (!is.null(x_label)) {
-    plot <- plot + xlab(x_label)
-  }
-  if (!is.null(y_label)) {
-    plot <- plot + ylab(y_label)
-  }
+  plot <- gglabels(plot, title = title, x_label = x_label, y_label = y_label)
 
   if (!missing(grid_by)) {
     # scales = "free" remove empty factors
@@ -45,10 +41,7 @@ ggbars <- function(data,
     plot <- plot + coord_flip()
   }
 
-  plot <- plot +
-    theme_publication(font_size) +
-    scale_fill_publication() +
-    scale_colour_publication()
+  plot <- theme_publication(plot, font_size)
 
   if (!with_legend) {
     plot <- plot + theme(legend.position = "none")

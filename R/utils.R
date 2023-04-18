@@ -24,3 +24,17 @@ rotate_x <- function(angle = 45) {
     axis.text.x = element_text(angle = angle, hjust = 1)
   ))
 }
+
+gglabels <- function(plot, title = NULL, x_label = NULL, y_label = NULL) {
+  if (!is.null(title)) {
+    plot <- plot + ggtitle(title)
+  }
+  if (!is.null(x_label)) {
+    plot <- plot + xlab(x_label)
+  }
+  if (!is.null(y_label)) {
+    plot <- plot + ylab(y_label)
+  }
+
+  return(plot)
+}

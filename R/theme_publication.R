@@ -10,7 +10,17 @@
 # https://github.com/koundy/ggplot_theme_Publication
 
 #' @export
-theme_publication <- function(base_size = 14, base_family = "sans") {
+theme_publication <- function(plot, base_size = 14, base_family = "sans") {
+  plot <- plot +
+    base_theme_publication(base_size = base_size, base_family = base_family) +
+    scale_fill_publication() +
+    scale_colour_publication()
+
+  return(plot)
+}
+
+#' @export
+base_theme_publication <- function(base_size = 14, base_family = "sans") {
   return(
     ggthemes::theme_foundation(
       base_size = base_size,
