@@ -2,6 +2,7 @@
 
 export(base_theme_publication)
 export(ggbars)
+export(gghist)
 export(scale_colour_publication)
 export(scale_colour_publication_dark)
 export(scale_fill_publication)
