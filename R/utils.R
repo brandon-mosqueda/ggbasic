@@ -1,5 +1,8 @@
 #' @import ggplot2
 
+#' @export
+ggplot2::ggsave
+
 rotate_x <- function(angle = 45) {
   return(theme(
     axis.text.x = element_text(angle = angle, hjust = 1)
