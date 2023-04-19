@@ -12,6 +12,6 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3.9000
 Collate: 
     'palettes.R'
-    'theme_publication.R'
+    'theme.R'
     'utils.R'
     'plots.R'

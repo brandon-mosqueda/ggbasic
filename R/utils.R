@@ -29,6 +29,7 @@ base_format <- function(plot,
                         x_label,
                         y_label,
                         theme,
+                        fill_colors,
                         font_size,
                         x_angle,
                         with_legend,
@@ -55,7 +56,7 @@ base_format <- function(plot,
     dark_grey = theme_dark_grey,
     dark_blue = theme_dark_blue
   )
-  plot <- theme_function(plot, font_size)
+  plot <- theme_function(plot, font_size = font_size, fill_colors = fill_colors)
 
   if (!with_legend) {
     plot <- plot + theme(legend.position = "none")

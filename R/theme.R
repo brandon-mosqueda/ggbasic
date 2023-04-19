@@ -9,22 +9,11 @@
 # Adapted from @koundy on GitHub
 # https://github.com/koundy/ggplot_theme_Publication
 
-#' @export
-theme_publication <- function(plot, base_size = 14, base_family = "sans") {
-  plot <- plot +
-    base_theme_publication(base_size = base_size, base_family = base_family) +
-    scale_fill_publication() +
-    scale_colour_publication()
-
-  return(plot)
-}
-
-#' @export
-base_theme_publication <- function(base_size = 14, base_family = "sans") {
+base_theme_publication <- function(font_size = 14, font_family = "sans") {
   return(
     ggthemes::theme_foundation(
-      base_size = base_size,
-      base_family = base_family
+      base_size = font_size,
+      base_family = font_family
     ) +
     theme(
       plot.title = element_text(
@@ -60,32 +49,29 @@ base_theme_publication <- function(base_size = 14, base_family = "sans") {
   )
 }
 
-#' @export
-scale_fill_publication <- function(...) {
+scale_fill_publication <- function(fill_colors, ...) {
   return(discrete_scale(
     "fill",
     "publication",
-    scales::manual_pal(values = BREWER_COLORS),
+    scales::manual_pal(values = fill_colors),
     ...
   ))
 }
 
-#' @export
-scale_colour_publication <- function(...) {
+scale_colour_publication <- function(fill_colors, ...) {
   return(discrete_scale(
     "colour",
     "publication",
-    scales::manual_pal(values = BREWER_COLORS),
+    scales::manual_pal(values = fill_colors),
     ...
   ))
 }
 
-#' @export
-base_theme_dark_grey <- function(base_size=14, base_family="sans") {
+base_theme_dark_grey <- function(font_size=14, font_family="sans") {
   return(
     ggthemes::theme_foundation(
-      base_size = base_size,
-      base_family = base_family
+      base_size = font_size,
+      base_family = font_family
     ) +
     theme(
       plot.title = element_text(
@@ -123,32 +109,11 @@ base_theme_dark_grey <- function(base_size=14, base_family="sans") {
      ))
 }
 
-#' @export
-scale_fill_publication_dark <- function(...){
-  return(discrete_scale(
-    "fill",
-    "publication",
-    scales::manual_pal(values = BREWER_COLORS),
-    ...
-  ))
-}
-
-#' @export
-scale_colour_publication_dark <- function(...){
-  return(discrete_scale(
-    "colour",
-    "publication",
-    scales::manual_pal(values = BREWER_COLORS),
-    ...
-  ))
-}
-
-#' @export
-base_theme_transparent <- function(base_size = 14, base_family = "sans") {
+base_theme_transparent <- function(font_size = 14, font_family = "sans") {
   return(
     ggthemes::theme_foundation(
-      base_size = base_size,
-      base_family = base_family
+      base_size = font_size,
+      base_family = font_family
     ) +
     theme(
       plot.title = element_text(
@@ -186,12 +151,11 @@ base_theme_transparent <- function(base_size = 14, base_family = "sans") {
   )
 }
 
-#' @export
-base_theme_dark_blue <- function(base_size=14, base_family="sans") {
+base_theme_dark_blue <- function(font_size=14, font_family="sans") {
   return(
     ggthemes::theme_foundation(
-      base_size = base_size,
-      base_family = base_family
+      base_size = font_size,
+      base_family = font_family
     ) +
     theme(
       plot.title = element_text(
@@ -230,31 +194,53 @@ base_theme_dark_blue <- function(base_size=14, base_family="sans") {
 }
 
 #' @export
-theme_transparent <- function(plot, base_size = 14, base_family = "sans") {
+theme_publication <- function(plot,
+                              font_size = 14,
+                              font_family = "sans",
+                              fill_colors = BREWER_COLORS) {
   plot <- plot +
-    base_theme_transparent(base_size = base_size, base_family = base_family) +
-    scale_fill_publication() +
-    scale_colour_publication()
+    base_theme_publication(font_size = font_size, font_family = font_family) +
+    scale_fill_publication(fill_colors) +
+    scale_colour_publication(fill_colors)
 
   return(plot)
 }
 
 #' @export
-theme_dark_grey <- function(plot, base_size = 14, base_family = "sans") {
+theme_transparent <- function(plot,
+                              font_size = 14,
+                              font_family = "sans",
+                              fill_colors = BREWER_COLORS) {
   plot <- plot +
-    base_theme_dark_grey(base_size = base_size, base_family = base_family) +
-    scale_fill_publication_dark() +
-    scale_colour_publication_dark()
+    base_theme_transparent(font_size = font_size, font_family = font_family) +
+    scale_fill_publication(fill_colors) +
+    scale_colour_publication(fill_colors)
 
   return(plot)
 }
 
 #' @export
-theme_dark_blue <- function(plot, base_size = 14, base_family = "sans") {
+theme_dark_grey <- function(plot,
+                            font_size = 14,
+                            font_family = "sans",
+                            fill_colors = BREWER_COLORS) {
   plot <- plot +
-    base_theme_dark_blue(base_size = base_size, base_family = base_family) +
-    scale_fill_publication_dark() +
-    scale_colour_publication_dark()
+    base_theme_dark_grey(font_size = font_size, font_family = font_family) +
+    scale_fill_publication(fill_colors) +
+    scale_colour_publication(fill_colors)
+
+  return(plot)
+}
+
+#' @export
+theme_dark_blue <- function(plot,
+                            font_size = 14,
+                            font_family = "sans",
+                            fill_colors = BREWER_COLORS) {
+  plot <- plot +
+    base_theme_dark_blue(font_size = font_size, font_family = font_family) +
+    scale_fill_publication(fill_colors) +
+    scale_colour_publication(fill_colors)
 
   return(plot)
 }
