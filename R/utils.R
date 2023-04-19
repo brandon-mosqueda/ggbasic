@@ -1,25 +1,5 @@
 #' @import ggplot2
 
-#' @export
-save_plot <- function(Plot, file, width = 35, height = 20, units = "cm", ...) {
-  background <- NULL
-  if ("transparent" %in% class(Plot)) {
-    background <- "transparent"
-  }
-
-  ggplot2::ggsave(
-    file,
-    Plot,
-    width = width,
-    height = height,
-    bg = background,
-    units = units,
-    ...
-  )
-
-  return(invisible(Plot))
-}
-
 rotate_x <- function(angle = 45) {
   return(theme(
     axis.text.x = element_text(angle = angle, hjust = 1)
@@ -45,9 +25,10 @@ base_format <- function(plot,
                         title,
                         x_label,
                         y_label,
+                        theme,
+                        font_size,
                         x_angle,
                         with_legend,
-                        font_size,
                         horizontal) {
   plot <- gglabels(plot, title = title, x_label = x_label, y_label = y_label)
 
@@ -64,7 +45,14 @@ base_format <- function(plot,
     plot <- plot + coord_flip()
   }
 
-  plot <- theme_publication(plot, font_size)
+  theme_function <- switch(
+    tolower(theme),
+    light = theme_publication,
+    transparent = theme_transparent,
+    dark_grey = theme_dark_grey,
+    dark_blue = theme_dark_blue
+  )
+  plot <- theme_function(plot, font_size)
 
   if (!with_legend) {
     plot <- plot + theme(legend.position = "none")

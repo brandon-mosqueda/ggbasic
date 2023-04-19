@@ -44,7 +44,7 @@ base_theme_publication <- function(base_size = 14, base_family = "sans") {
       axis.line.x = element_line(colour = "black"),
       axis.line.y = element_line(colour = "black"),
       axis.ticks = element_line(),
-      panel.grid.major = element_line(colour="#f0f0f0"),
+      panel.grid.major = element_line(colour="#efefef"),
       panel.grid.minor = element_blank(),
       legend.key = element_rect(colour = NA),
       legend.position = "bottom",
@@ -81,7 +81,7 @@ scale_colour_publication <- function(...) {
 }
 
 #' @export
-theme_dark_grey <- function(base_size=14, base_family="sans") {
+base_theme_dark_grey <- function(base_size=14, base_family="sans") {
   return(
     ggthemes::theme_foundation(
       base_size = base_size,
@@ -144,7 +144,7 @@ scale_colour_publication_dark <- function(...){
 }
 
 #' @export
-theme_transparent <- function(base_size=14, base_family="sans") {
+base_theme_transparent <- function(base_size = 14, base_family = "sans") {
   return(
     ggthemes::theme_foundation(
       base_size = base_size,
@@ -187,7 +187,7 @@ theme_transparent <- function(base_size=14, base_family="sans") {
 }
 
 #' @export
-theme_dark_blue <- function(base_size=14, base_family="sans") {
+base_theme_dark_blue <- function(base_size=14, base_family="sans") {
   return(
     ggthemes::theme_foundation(
       base_size = base_size,
@@ -227,4 +227,34 @@ theme_dark_blue <- function(base_size=14, base_family="sans") {
       strip.background = element_rect(colour = "#2D3A4C", fill = "#2D3A4C"),
       strip.text = element_text(face = "bold", colour = "white")
     ))
+}
+
+#' @export
+theme_transparent <- function(plot, base_size = 14, base_family = "sans") {
+  plot <- plot +
+    base_theme_transparent(base_size = base_size, base_family = base_family) +
+    scale_fill_publication() +
+    scale_colour_publication()
+
+  return(plot)
+}
+
+#' @export
+theme_dark_grey <- function(plot, base_size = 14, base_family = "sans") {
+  plot <- plot +
+    base_theme_dark_grey(base_size = base_size, base_family = base_family) +
+    scale_fill_publication_dark() +
+    scale_colour_publication_dark()
+
+  return(plot)
+}
+
+#' @export
+theme_dark_blue <- function(plot, base_size = 14, base_family = "sans") {
+  plot <- plot +
+    base_theme_dark_blue(base_size = base_size, base_family = base_family) +
+    scale_fill_publication_dark() +
+    scale_colour_publication_dark()
+
+  return(plot)
 }

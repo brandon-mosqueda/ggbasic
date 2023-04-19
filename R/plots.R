@@ -14,9 +14,10 @@ ggbars <- function(data,
                    x_label = NULL,
                    y_label = NULL,
 
+                   theme = "light",
                    font_size = 18,
                    x_angle = 0,
-                   alpha = 0.8,
+                   alpha = 0.9,
                    with_legend = TRUE,
                    horizontal = FALSE) {
   if (is.null(y)) {
@@ -38,6 +39,7 @@ ggbars <- function(data,
     grid_by = grid_by,
     x_angle = x_angle,
     with_legend = with_legend,
+    theme = theme,
     font_size = font_size,
     horizontal = horizontal
   ))
@@ -55,6 +57,7 @@ gghist <- function(data,
 
                    fill_color = "#386cb0",
 
+                   theme = "light",
                    font_size = 18,
                    x_angle = 0,
                    alpha = 0.7,
@@ -78,6 +81,7 @@ gghist <- function(data,
     grid_by = grid_by,
     x_angle = x_angle,
     with_legend = with_legend,
+    theme = theme,
     font_size = font_size,
     horizontal = horizontal
   ))
@@ -95,9 +99,10 @@ ggbox <- function(data,
                   fill_color = "#386cb0",
                   outlier_color = "#ef3b2c",
 
+                  theme = "light",
                   font_size = 18,
                   with_legend = TRUE,
-                  alpha = 0.8,
+                  alpha = 0.9,
                   horizontal = FALSE) {
   if (is.null(fill_by)) {
     plot <- ggplot(data, aes_string(x = .data[[x]])) +
@@ -123,9 +128,10 @@ ggbox <- function(data,
     x_label = x_label,
     y_label = NULL,
     grid_by = grid_by,
+    theme = theme,
+    font_size = font_size,
     x_angle = 0,
     with_legend = with_legend,
-    font_size = font_size,
     horizontal = horizontal
   ))
 }
@@ -143,6 +149,7 @@ ggscatter <- function(data,
 
                       fill_color = "#386cb0",
                       point_size = 2,
+                      theme = "light",
                       font_size = 18,
                       x_angle = 0,
                       alpha = 1,
@@ -170,9 +177,10 @@ ggscatter <- function(data,
     x_label = x_label,
     y_label = y_label,
     grid_by = grid_by,
+    theme = theme,
+    font_size = font_size,
     x_angle = x_angle,
     with_legend = with_legend,
-    font_size = font_size,
     horizontal = horizontal
   ))
 }
@@ -190,6 +198,7 @@ ggline <- function(data,
 
                    fill_color = "#386cb0",
                    line_width = 2,
+                   theme = "light",
                    font_size = 18,
                    x_angle = 0,
                    alpha = 1,
@@ -217,9 +226,10 @@ ggline <- function(data,
     x_label = x_label,
     y_label = y_label,
     grid_by = grid_by,
+    theme = theme,
+    font_size = font_size,
     x_angle = x_angle,
     with_legend = with_legend,
-    font_size = font_size,
     horizontal = horizontal
   ))
 }
