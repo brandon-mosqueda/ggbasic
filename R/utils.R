@@ -28,6 +28,8 @@ base_format <- function(plot,
                         title,
                         x_label,
                         y_label,
+                        y_breaks_num,
+                        x_breaks_num,
                         theme,
                         fill_colors,
                         font_size,
@@ -43,6 +45,14 @@ base_format <- function(plot,
       scales = "free",
       space = "free"
     )
+  }
+
+  if (!is.null(y_breaks_num)) {
+    plot <- plot + scale_y_continuous(n.breaks = y_breaks_num)
+  }
+
+  if (!is.null(x_breaks_num)) {
+    plot <- plot + scale_x_continuous(n.breaks = x_breaks_num)
   }
 
   if (horizontal) {
