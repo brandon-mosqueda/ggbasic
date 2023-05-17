@@ -7,7 +7,7 @@
 ggbars <- function(data,
                    x,
                    y = NULL,
-                   fill_by = x,
+                   fill_by = NULL,
                    grid_by = NULL,
 
                    title = NULL,
@@ -17,20 +17,42 @@ ggbars <- function(data,
                    y_breaks_num = 10,
                    theme = "light",
                    fill_colors = BREWER_COLORS,
+                   color = "#386cb0",
                    font_size = 18,
                    x_angle = 0,
                    alpha = 0.9,
                    with_legend = TRUE,
                    horizontal = FALSE) {
   if (is.null(y)) {
-    plot <- ggplot(data, aes(x = .data[[x]], fill = .data[[fill_by]])) +
-      geom_bar(position = position_dodge(width = 0.92), alpha = alpha)
+    if (is.null(fill_by)) {
+      plot <- ggplot(data, aes(x = .data[[x]])) +
+        geom_bar(
+          position = position_dodge(width = 0.92),
+          alpha = alpha,
+          color = color,
+          fill = color
+        )
+      with_legend <- FALSE
+    } else {
+      plot <- ggplot(data, aes(x = .data[[x]], fill = .data[[fill_by]])) +
+        geom_bar(position = position_dodge(width = 0.92), alpha = alpha)
+    }
   } else {
-    plot <- ggplot(
+    if (is.null(fill_by)) {
+      plot <- ggplot(data, aes(x = .data[[x]], y = .data[[y]])) +
+        geom_col(
+          position = position_dodge(width = 0.92),
+          alpha = alpha,
+          color = color,
+          fill = color
+        )
+      with_legend <- FALSE
+    } else {
+      plot <- ggplot(
         data,
         aes(x = .data[[x]], y = .data[[y]], fill = .data[[fill_by]])
-      ) +
-      geom_col(position = position_dodge(width = 0.92), alpha = alpha)
+      ) + geom_col(position = position_dodge(width = 0.92), alpha = alpha)
+    }
   }
 
   return(base_format(
