@@ -238,6 +238,7 @@ ggline <- function(data,
                    x_label = NULL,
                    y_label = NULL,
 
+                   with_points = FALSE,
                    fill_color = "#386cb0",
                    line_width = 2,
                    y_breaks_num = 10,
@@ -252,17 +253,33 @@ ggline <- function(data,
   if (is.null(fill_by)) {
     plot <- ggplot(data, aes(x = .data[[x]], y = .data[[y]])) +
       geom_line(color = fill_color, alpha = alpha)
+
+    if (with_points) {
+      plot <- plot + geom_point(
+        stat = "identity",
+        size = line_width,
+        color = fill_color,
+        alpha = alpha
+      )
+    }
   } else {
     plot <- ggplot(
       data,
       aes(
         x = .data[[x]],
         y = .data[[y]],
-        color = .data[[fill_by]],
-        alpha = alpha
+        color = .data[[fill_by]]
       )
     ) +
-    geom_line()
+    geom_line(alpha = alpha)
+
+    if (with_points) {
+      plot <- plot + geom_point(
+        stat = "identity",
+        size = line_width,
+        alpha = alpha
+      )
+    }
   }
 
   return(base_format(
