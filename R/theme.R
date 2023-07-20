@@ -39,11 +39,10 @@ base_theme_publication <- function(font_size = 14, font_family = "sans") {
       legend.position = "bottom",
       legend.direction = "horizontal",
       legend.box = "vetical",
-      legend.key.size= grid::unit(1, "cm"),
-      legend.margin = margin(15, 0, 0, 0, "pt"),
-      legend.spacing.x = grid::unit(12, "pt"),
+      legend.key.size = grid::unit(10, "pt"),
+      legend.margin = margin(0, 0, 0, 0),
       legend.title = element_text(face="italic"),
-      plot.margin = margin(10, 5, 5, 5, "mm"),
+      plot.margin = margin(10, 10, 10, 10),
       strip.background = element_rect(colour = "#cacaca", fill = "#cacaca"),
       strip.text = element_text(face = "bold")
     )
@@ -101,10 +100,10 @@ base_theme_dark_grey <- function(font_size=14, font_family="sans") {
       legend.position = "bottom",
       legend.direction = "horizontal",
       legend.box = "vetical",
-      legend.key.size = grid::unit(0.5, "cm"),
-      legend.margin = margin(0, 0, 0, 0, "cm"),
+      legend.key.size = grid::unit(10, "pt"),
+      legend.margin = margin(0, 0, 0, 0),
       legend.title = element_text(face = "italic", colour = "white"),
-      plot.margin = margin(10, 5, 5, 5, "mm"),
+      plot.margin = margin(10, 10, 10, 10),
       strip.background = element_rect(colour = "#2D3A4C", fill = "#2D3A4C"),
       strip.text = element_text(face = "bold", colour = "white")
      ))
@@ -142,10 +141,10 @@ base_theme_transparent <- function(font_size = 14, font_family = "sans") {
       legend.position = "bottom",
       legend.direction = "horizontal",
       legend.box = "vetical",
-      legend.key.size = grid::unit(0.5, "cm"),
-      legend.margin = margin(0, 0, 0, 0, "cm"),
+      legend.key.size = grid::unit(10, "pt"),
+      legend.margin = margin(0, 0, 0, 0),
       legend.title = element_text(face = "italic", colour = "white"),
-      plot.margin = margin(10, 5, 5, 5, "mm"),
+      plot.margin = margin(10, 10, 10, 10),
       strip.background = element_rect(colour = "#2D3A4C", fill = "#2D3A4C"),
       strip.text = element_text(face = "bold", colour = "white")
     )
@@ -185,10 +184,10 @@ base_theme_dark_blue <- function(font_size=14, font_family="sans") {
       legend.position = "bottom",
       legend.direction = "horizontal",
       legend.box = "vetical",
-      legend.key.size = grid::unit(0.5, "cm"),
-      legend.margin = margin(0, 0, 0, 0, "cm"),
+      legend.key.size = grid::unit(10, "pt"),
+      legend.margin = margin(0, 0, 0, 0),
       legend.title = element_text(face = "italic", colour = "white"),
-      plot.margin = margin(10, 5, 5, 5, "mm"),
+      plot.margin = margin(10, 10, 10, 10),
       strip.background = element_rect(colour = "#2D3A4C", fill = "#2D3A4C"),
       strip.text = element_text(face = "bold", colour = "white")
     ))

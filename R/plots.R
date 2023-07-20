@@ -252,7 +252,7 @@ ggline <- function(data,
                    horizontal = FALSE) {
   if (is.null(fill_by)) {
     plot <- ggplot(data, aes(x = .data[[x]], y = .data[[y]])) +
-      geom_line(color = fill_color, alpha = alpha)
+      geom_line(color = fill_color, alpha = alpha, size = line_width)
 
     if (with_points) {
       plot <- plot + geom_point(
@@ -271,7 +271,7 @@ ggline <- function(data,
         color = .data[[fill_by]]
       )
     ) +
-    geom_line(alpha = alpha)
+    geom_line(alpha = alpha, size = line_width)
 
     if (with_points) {
       plot <- plot + geom_point(
