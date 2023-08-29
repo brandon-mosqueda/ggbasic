@@ -40,11 +40,19 @@ base_format <- function(plot,
 
   if (!is.null(grid_by)) {
     # scales = "free" remove empty factors
-    plot <- plot + facet_grid(
-      as.formula(sprintf("~ %s", grid_by)),
-      scales = "free",
-      space = "free"
-    )
+    if (length(grid_by) == 1) {
+      plot <- plot + facet_grid(
+        as.formula(sprintf("~ %s", grid_by)),
+        scales = "free",
+        space = "free"
+      )
+    } else {
+      plot <- plot + facet_grid(
+        as.formula(paste0(grid_by, collapse = "~")),
+        scales = "free",
+        space = "free"
+      )
+    }
   }
 
   if (!is.null(y_breaks_num)) {
