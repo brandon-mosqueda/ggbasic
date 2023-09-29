@@ -20,7 +20,7 @@ box_plot <- function(data,
                      outlier_color = "#ef3b2c",
                      outlier_size = 5,
                      theme = "light",
-                     font_size = 18,
+                     font_size = 15,
                      alpha = 0.9,
                      with_legend = TRUE,
                      horizontal = FALSE) {

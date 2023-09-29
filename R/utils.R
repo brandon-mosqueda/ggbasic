@@ -78,3 +78,24 @@ base_format <- function(plot,
 
   return(plot)
 }
+
+#' @export
+error_intervals <- function(value,
+                            standar_error,
+                            margin = 1.96,
+                            line_width = 0.2,
+                            color = "black") {
+  value <- rlang::enquo(value)
+  standar_error <- rlang::enquo(standar_error)
+
+  return(ggplot2::geom_errorbar(
+    ggplot2::aes(
+      ymin = !!value - margin * !!standar_error,
+      ymax = !!value + margin * !!standar_error
+    ),
+    width = line_width,
+    linewidth = line_width,
+    position = ggplot2::position_dodge(0.9),
+    colour = color
+  ))
+}
