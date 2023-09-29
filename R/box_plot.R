@@ -4,6 +4,26 @@
 #' @include utils.R
 #' @include theme.R
 
+#' @title Box plot
+#'
+#' @description
+#' Elegant and easy to implement box plots.
+#'
+#' @param outlier_color (`character(1)`) Color to use for outliers. `#ef3b2c`
+#'   (red) by default.
+#' @param outlier_size (`numeric(1)`) Size to use for outliers. `5` by default.
+#' @template base_params
+#' @template y_null_param
+#' @template fill_by_param
+#' @template fill_colors_param
+#' @template color_param
+#'
+#' @return A (`ggplot2`) plot object.
+#'
+#' @family plots
+#'
+#' @example inst/examples/box_plot.R
+#'
 #' @export
 box_plot <- function(data,
                      x,

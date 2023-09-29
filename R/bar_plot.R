@@ -10,7 +10,7 @@
 #' Elegant and easy to implement bar plots.
 #'
 #' @template base_params
-#' @template y_param
+#' @template y_null_param
 #' @template fill_by_param
 #' @template fill_colors_param
 #' @template color_param

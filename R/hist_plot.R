@@ -4,6 +4,28 @@
 #' @include utils.R
 #' @include theme.R
 
+#' @title Histogram plot
+#'
+#' @description
+#' Elegant and easy to implement histogram plots.
+#'
+#' @param bins (`numeric(1)`) Number of bins to use. `20` by default.
+#' @template base_params
+#' @template fill_by_param
+#' @template fill_colors_param
+#' @template color_param
+#' @template y_breaks_num_param
+#' @template x_breaks_num_param
+#' @param y_label (`character(1)`) Label for y-axis. `"count"` by default.
+#' @param alpha (`numeric(1)`) Alpha value (transparency) to use for elements in
+#'   the plot. `0.7` by default.
+#'
+#' @return A (`ggplot2`) plot object.
+#'
+#' @family plots
+#'
+#' @example inst/examples/hist_plot.R
+#'
 #' @export
 hist_plot <- function(data,
                       x,
@@ -19,7 +41,7 @@ hist_plot <- function(data,
                       color = "#386cb0",
                       fill_colors = BREWER_COLORS,
                       theme = "light",
-                      x_breaks_num = NULL,
+                      x_breaks_num = 10,
                       y_breaks_num = 10,
                       font_size = 15,
                       x_angle = 0,

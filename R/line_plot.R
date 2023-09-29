@@ -4,6 +4,28 @@
 #' @include utils.R
 #' @include theme.R
 
+#' @title Line plot
+#'
+#' @description
+#' Elegant and easy to implement line plots.
+#'
+#' @param with_points (`logical(1)`) Whether to add points to the plot. `TRUE`
+#'   by default.
+#' @param line_width (`numeric(1)`) Width of the line. `2` by default.
+#' @template base_params
+#' @template y_param
+#' @template fill_by_param
+#' @template fill_colors_param
+#' @template color_param
+#' @template y_breaks_num_param
+#' @template x_breaks_num_param
+#'
+#' @return A (`ggplot2`) plot object.
+#'
+#' @family plots
+#'
+#' @example inst/examples/line_plot.R
+#'
 #' @export
 line_plot <- function(data,
                       x,
@@ -16,8 +38,8 @@ line_plot <- function(data,
                       x_label = NULL,
                       y_label = NULL,
 
-                      with_points = FALSE,
-                      fill_color = "#386cb0",
+                      with_points = TRUE,
+                      color = "#386cb0",
                       fill_colors = BREWER_COLORS,
                       line_width = 2,
                       theme = "light",
@@ -36,13 +58,13 @@ line_plot <- function(data,
 
   if (rlang::quo_is_null(fill_by)) {
     plot <- ggplot(data, aes(x = !!x, y = !!y)) +
-      geom_line(color = fill_color, alpha = alpha, size = line_width)
+      geom_line(color = color, alpha = alpha, size = line_width)
 
     if (with_points) {
       plot <- plot + geom_point(
         stat = "identity",
         size = line_width,
-        color = fill_color,
+        color = color,
         alpha = alpha
       )
     }

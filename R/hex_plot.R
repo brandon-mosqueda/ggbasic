@@ -4,6 +4,28 @@
 #' @include utils.R
 #' @include theme.R
 
+#' @title Hexagonal binning plot
+#'
+#' @description
+#' Elegant and easy to implement hexagonal binning plots.
+#'
+#' @param bins (`numeric(1)`) Number of bins to use in both vertical and
+#'   horizontal directions. `30` by default.
+#' @param low_color (`character(1)`) Gradient color to use for low values.
+#'   `#132B43` (blue) by default.
+#' @param high_color (`character(1)`) Gradient color to use for high values.
+#'   `#56B1F7` (light blue) by default.
+#' @template base_params
+#' @template y_param
+#' @template y_breaks_num_param
+#' @template x_breaks_num_param
+#'
+#' @return A (`ggplot2`) plot object.
+#'
+#' @family plots
+#'
+#' @example inst/examples/hex_plot.R
+#'
 #' @export
 hex_plot <- function(data,
                      x,
@@ -23,6 +45,7 @@ hex_plot <- function(data,
                      x_breaks_num = 10,
                      font_size = 15,
                      x_angle = 0,
+                     alpha = 1,
                      with_legend = TRUE,
                      horizontal = FALSE) {
   x <- rlang::enquo(x)
@@ -31,7 +54,7 @@ hex_plot <- function(data,
   facet_col <- rlang::enquo(facet_col)
 
   plot <- ggplot(data, aes(x = !!x, y = !!y)) +
-    geom_hex(bins = bins) +
+    geom_hex(bins = bins, alpha = alpha) +
     scale_fill_gradient(low = low_color, high = high_color)
 
   return(base_format(

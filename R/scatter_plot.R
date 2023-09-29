@@ -4,6 +4,26 @@
 #' @include utils.R
 #' @include theme.R
 
+#' @title Scatter plot
+#'
+#' @description
+#' Elegant and easy to implement scatter plots.
+#'
+#' @param point_size (`numeric(1)`) Size of the points. `2` by default.
+#' @template base_params
+#' @template y_param
+#' @template fill_by_param
+#' @template fill_colors_param
+#' @template color_param
+#' @template y_breaks_num_param
+#' @template x_breaks_num_param
+#'
+#' @return A (`ggplot2`) plot object.
+#'
+#' @family plots
+#'
+#' @example inst/examples/scatter_plot.R
+#'
 #' @export
 scatter_plot <- function(data,
                          x,
@@ -16,7 +36,7 @@ scatter_plot <- function(data,
                          x_label = NULL,
                          y_label = NULL,
 
-                         fill_color = "#386cb0",
+                         color = "#386cb0",
                          fill_colors = BREWER_COLORS,
                          point_size = 2,
                          theme = "light",
@@ -38,7 +58,7 @@ scatter_plot <- function(data,
       geom_point(
         stat = "identity",
         size = point_size,
-        color = fill_color,
+        color = color,
         alpha = alpha
       )
   } else {
