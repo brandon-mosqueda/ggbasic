@@ -16,12 +16,13 @@ hex_plot <- function(data,
                      x_label = NULL,
                      y_label = NULL,
 
+                     low_color = "#132B43",
+                     high_color = "#56B1F7",
                      theme = "light",
                      y_breaks_num = 10,
                      x_breaks_num = 10,
                      font_size = 15,
                      x_angle = 0,
-                     alpha = 1,
                      with_legend = TRUE,
                      horizontal = FALSE) {
   x <- rlang::enquo(x)
@@ -30,7 +31,8 @@ hex_plot <- function(data,
   facet_col <- rlang::enquo(facet_col)
 
   plot <- ggplot(data, aes(x = !!x, y = !!y)) +
-    geom_hex(bins = bins)
+    geom_hex(bins = bins) +
+    scale_fill_gradient(low = low_color, high = high_color)
 
   return(base_format(
     plot = plot,
