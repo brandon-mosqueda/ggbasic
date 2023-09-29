@@ -79,11 +79,32 @@ base_format <- function(plot,
   return(plot)
 }
 
+#' @title Error intervals
+#'
+#' @description
+#' Add error intervals to a plot.
+#'
+#' @param value (`quote`) Quoted name of column to take the reference value for
+#'   the error intervals.
+#' @param standar_error (`quote`) Quoted name of column to take the standard
+#'   error for the error intervals.
+#' @param margin (`numeric(1)`) Margin to use for the error intervals. Margin
+#'   applies on both sides. Error bar goes from `value - margin * standar_error`
+#'   to `value + margin * standar_error`. `1.96` by default.
+#' @param line_width (`numeric(1)`) Width of the error bar. `0.5` by default.
+#' @param color (`character(1)`) Color to use for the error bar. `"black"` by
+#'   default.
+#'
+#' @return
+#' A `ggplot2::geom_errorbar` object.
+#'
+#' @example inst/examples/error_intervals.R
+#'
 #' @export
 error_intervals <- function(value,
                             standar_error,
                             margin = 1.96,
-                            line_width = 0.2,
+                            line_width = 0.5,
                             color = "black") {
   value <- rlang::enquo(value)
   standar_error <- rlang::enquo(standar_error)
