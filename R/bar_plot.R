@@ -7,42 +7,20 @@
 #' @title Bar plot
 #'
 #' @description
-#' Basic bar plot.
+#' Elegant and easy to implement bar plots.
 #'
-#' @param data (`data.frame`) Data to use for plot.
-#' @param x (`quote`) Quoted name of column to use for x-axis.
-#' @param y (`quote`) Quoted name of column to use for y-axis.
-#' @param fill_by (`quote(1)`) Quoted name of column to use to fill the elements
-#'   of the plot. If `NULL`, the plot will be filled with a single color. `NULL`
-#'   by default.`
-#' @param facet_row (`quote(1)`) Quoted name of column to use for row faceting.
-#'  `NULL` by default.
-#' @param facet_col (`quote(1)`) Quoted name of column to use for column
-#'  faceting. `NULL` by default.
-#' @param title (`character(1)`) Title of the plot. `NULL` by default.
-#' @param x_label (`character(1)`) Label for x-axis. `NULL` by default.
-#' @param y_label (`character(1)`) Label for y-axis. `NULL` by default.
-#' @param fill_colors (`character`) Colors to use for filling the plot. Only
-#'   used if `fill_by` is not `NULL`. `BREWER_COLORS` by default.
-#' @param color (`character(1)`) Color to use for the plot. Only used when
-#'   `fill_by` is `NULL`. `#386cb0` by default.
-#' @param theme (`character(1)`) Theme to use for the plot. The options are:
-#'   `"light"`,  `"dark_grey"`, `"dark_blue"` and `"transparent"`. `light` by
-#'   default.
-#' @param y_breaks_num (`numeric(1)`) Number of breaks to use for y-axis. `10`
-#'   by default.
-#' @param font_size (`numeric(1)`) Font size to use for the plot. `18` by
-#'  default.
-#' @param x_angle (`numeric(1)`) Angle to use for x-axis labels. `0`
-#'   (horizontal) by default.
-#' @param alpha (`numeric(1)`) Alpha value (transparency) to use for elements in
-#'   the plot. `0.9` by default.
-#' @param with_legend (`logical(1)`) Whether to include a legend in the plot.
-#'  Only used when `fill_by` is not `NULL`. `TRUE` by default.
-#' @param horizontal (`logical(1)`) Whether to plot the elements horizontally.
-#'  `FALSE` by default.
+#' @template base_params
+#' @template y_param
+#' @template fill_by_param
+#' @template fill_colors_param
+#' @template color_param
+#' @template y_breaks_num_param
 #'
-#' @return A (`ggplot`) plot object.
+#' @return A (`ggplot2`) plot object.
+#'
+#' @family plots
+#'
+#' @example inst/examples/bar_plot.R
 #'
 #' @export
 bar_plot <- function(data,
