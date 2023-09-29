@@ -199,9 +199,13 @@ theme_publication <- function(plot,
                               font_family = "sans",
                               fill_colors = BREWER_COLORS) {
   plot <- plot +
-    base_theme_publication(font_size = font_size, font_family = font_family) +
-    scale_fill_publication(fill_colors) +
-    scale_colour_publication(fill_colors)
+    base_theme_publication(font_size = font_size, font_family = font_family)
+
+  if (!is.null(fill_colors)) {
+    plot <- plot +
+      scale_fill_publication(fill_colors) +
+      scale_colour_publication(fill_colors)
+  }
 
   return(plot)
 }
@@ -212,9 +216,13 @@ theme_transparent <- function(plot,
                               font_family = "sans",
                               fill_colors = BREWER_COLORS) {
   plot <- plot +
-    base_theme_transparent(font_size = font_size, font_family = font_family) +
-    scale_fill_publication(fill_colors) +
-    scale_colour_publication(fill_colors)
+    base_theme_transparent(font_size = font_size, font_family = font_family)
+
+  if (!is.null(fill_colors)) {
+    plot <- plot +
+      scale_fill_publication(fill_colors) +
+      scale_colour_publication(fill_colors)
+  }
 
   return(plot)
 }
@@ -225,9 +233,13 @@ theme_dark_grey <- function(plot,
                             font_family = "sans",
                             fill_colors = BREWER_COLORS) {
   plot <- plot +
-    base_theme_dark_grey(font_size = font_size, font_family = font_family) +
-    scale_fill_publication(fill_colors) +
-    scale_colour_publication(fill_colors)
+    base_theme_dark_grey(font_size = font_size, font_family = font_family)
+
+  if (!is.null(fill_colors)) {
+    plot <- plot +
+      scale_fill_publication(fill_colors) +
+      scale_colour_publication(fill_colors)
+  }
 
   return(plot)
 }
@@ -238,9 +250,13 @@ theme_dark_blue <- function(plot,
                             font_family = "sans",
                             fill_colors = BREWER_COLORS) {
   plot <- plot +
-    base_theme_dark_blue(font_size = font_size, font_family = font_family) +
-    scale_fill_publication(fill_colors) +
-    scale_colour_publication(fill_colors)
+    base_theme_dark_blue(font_size = font_size, font_family = font_family)
+
+  if (!is.null(fill_colors)) {
+    plot <- plot +
+      scale_fill_publication(fill_colors) +
+      scale_colour_publication(fill_colors)
+  }
 
   return(plot)
 }

@@ -19,6 +19,7 @@ Collate:
     'utils.R'
     'bar_plot.R'
     'box_plot.R'
+    'hex_plot.R'
     'hist_plot.R'
     'line_plot.R'
     'scatter_plot.R'
