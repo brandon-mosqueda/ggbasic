@@ -24,7 +24,8 @@ gglabels <- function(plot, title = NULL, x_label = NULL, y_label = NULL) {
 }
 
 base_format <- function(plot,
-                        grid_by,
+                        facet_row,
+                        facet_col,
                         title,
                         x_label,
                         y_label,
@@ -36,24 +37,15 @@ base_format <- function(plot,
                         x_angle,
                         with_legend,
                         horizontal) {
+  facet_row <- rlang::enquo(facet_row)
+  facet_col <- rlang::enquo(facet_col)
+
   plot <- gglabels(plot, title = title, x_label = x_label, y_label = y_label)
 
-  if (!is.null(grid_by)) {
-    # scales = "free" remove empty factors
-    if (length(grid_by) == 1) {
-      plot <- plot + facet_grid(
-        as.formula(sprintf("~ %s", grid_by)),
-        scales = "free",
-        space = "free"
-      )
-    } else {
-      plot <- plot + facet_grid(
-        as.formula(paste0(grid_by, collapse = "~")),
-        scales = "free",
-        space = "free"
-      )
-    }
-  }
+  plot <- plot + facet_grid(
+    rows = vars(!!facet_row),
+    cols = vars(!!facet_col)
+  )
 
   if (!is.null(y_breaks_num)) {
     plot <- plot + scale_y_continuous(n.breaks = y_breaks_num)
