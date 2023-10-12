@@ -44,6 +44,26 @@ box_plot <- function(data,
                      alpha = 0.9,
                      with_legend = TRUE,
                      horizontal = FALSE) {
+  if (is_character(x)) {
+    x <- rlang::sym(x)
+  }
+
+  if (is_character(y)) {
+    y <- rlang::sym(y)
+  }
+
+  if (is_character(fill_by)) {
+    fill_by <- rlang::sym(fill_by)
+  }
+
+  if (is_character(facet_row)) {
+    facet_row <- rlang::sym(facet_row)
+  }
+
+  if (is_character(facet_col)) {
+    facet_col <- rlang::sym(facet_col)
+  }
+
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
   fill_by <- rlang::enquo(fill_by)

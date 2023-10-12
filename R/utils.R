@@ -84,13 +84,14 @@ base_format <- function(plot,
 #' @description
 #' Add error intervals to a plot.
 #'
-#' @param value (`quote`) Quoted name of column to take the reference value for
-#'   the error intervals.
-#' @param standar_error (`quote`) Quoted name of column to take the standard
-#'   error for the error intervals.
+#' @param value (`quote` | `character`) Name of column to take the reference
+#'   value for the error intervals.
+#' @param standard_error (`quote` | `character`) Name of column to take the
+#'   standard error for the error intervals.
 #' @param margin (`numeric(1)`) Margin to use for the error intervals. Margin
-#'   applies on both sides. Error bar goes from `value - margin * standar_error`
-#'   to `value + margin * standar_error`. `1.96` by default.
+#'   applies on both sides. Error bar goes from
+#'   `value - margin * standard_error` to `value + margin * standard_error`.
+#'   `1.96` by default.
 #' @param line_width (`numeric(1)`) Width of the error bar. `0.5` by default.
 #' @param color (`character(1)`) Color to use for the error bar. `"black"` by
 #'   default.
@@ -102,21 +103,33 @@ base_format <- function(plot,
 #'
 #' @export
 error_intervals <- function(value,
-                            standar_error,
+                            standard_error,
                             margin = 1.96,
                             line_width = 0.5,
                             color = "black") {
+  if (is_character(value)) {
+    value <- rlang::sym(value)
+  }
+
+  if (is_character(standard_error)) {
+    standard_error <- rlang::sym(standard_error)
+  }
+
   value <- rlang::enquo(value)
-  standar_error <- rlang::enquo(standar_error)
+  standard_error <- rlang::enquo(standard_error)
 
   return(ggplot2::geom_errorbar(
     ggplot2::aes(
-      ymin = !!value - margin * !!standar_error,
-      ymax = !!value + margin * !!standar_error
+      ymin = !!value - margin * !!standard_error,
+      ymax = !!value + margin * !!standard_error
     ),
     width = line_width,
     linewidth = line_width,
     position = ggplot2::position_dodge(0.9),
     colour = color
   ))
+}
+
+is_character <- function(x) {
+  tryCatch({is.character(x)}, error = function(e) FALSE)
 }

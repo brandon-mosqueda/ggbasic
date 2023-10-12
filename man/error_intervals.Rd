@@ -6,22 +6,23 @@
 \usage{
 error_intervals(
   value,
-  standar_error,
+  standard_error,
   margin = 1.96,
   line_width = 0.5,
   color = "black"
 )
 }
 \arguments{
-\item{value}{(\code{quote}) Quoted name of column to take the reference value for
-the error intervals.}
+\item{value}{(\code{quote} | \code{character}) Name of column to take the reference
+value for the error intervals.}
 
-\item{standar_error}{(\code{quote}) Quoted name of column to take the standard
-error for the error intervals.}
+\item{standard_error}{(\code{quote} | \code{character}) Name of column to take the
+standard error for the error intervals.}
 
 \item{margin}{(\code{numeric(1)}) Margin to use for the error intervals. Margin
-applies on both sides. Error bar goes from \code{value - margin * standar_error}
-to \code{value + margin * standar_error}. \code{1.96} by default.}
+applies on both sides. Error bar goes from
+\code{value - margin * standard_error} to \code{value + margin * standard_error}.
+\code{1.96} by default.}
 
 \item{line_width}{(\code{numeric(1)}) Width of the error bar. \code{0.5} by default.}
 

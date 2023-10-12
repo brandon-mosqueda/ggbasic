@@ -48,6 +48,22 @@ hex_plot <- function(data,
                      alpha = 1,
                      with_legend = TRUE,
                      horizontal = FALSE) {
+  if (is_character(x)) {
+    x <- rlang::sym(x)
+  }
+
+  if (is_character(y)) {
+    y <- rlang::sym(y)
+  }
+
+  if (is_character(facet_row)) {
+    facet_row <- rlang::sym(facet_row)
+  }
+
+  if (is_character(facet_col)) {
+    facet_col <- rlang::sym(facet_col)
+  }
+
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
   facet_row <- rlang::enquo(facet_row)

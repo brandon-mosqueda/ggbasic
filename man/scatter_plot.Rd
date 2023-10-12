@@ -30,19 +30,19 @@ scatter_plot(
 \arguments{
 \item{data}{(\code{data.frame}) Data to use for plot.}
 
-\item{x}{(\code{quote}) Quoted name of column to use for x-axis.}
+\item{x}{(\code{quote} | \code{character}) Name of column to use for x-axis.}
 
-\item{y}{(\code{quote}) Quoted name of column to use for y-axis.}
+\item{y}{(\code{quote} | \code{character}) Name of column to use for y-axis.}
 
-\item{fill_by}{(\code{quote}) Quoted name of column to use to fill the elements
-of the plot. If \code{NULL}, the plot will be filled with a single color. \code{NULL}
-by default.`}
+\item{fill_by}{(\code{quote} | \code{character}) Name of column to use to fill the
+elements of the plot. If \code{NULL}, the plot will be filled with a single
+color. \code{NULL} by default.`}
 
-\item{facet_row}{(\code{quote}) Quoted name of column to use for row faceting.
-\code{NULL} by default.}
+\item{facet_row}{(\code{quote} | \code{character}) Name of column to use for row
+faceting. \code{NULL} by default.}
 
-\item{facet_col}{(\code{quote}) Quoted name of column to use for column faceting.
-\code{NULL} by default.}
+\item{facet_col}{(\code{quote} | \code{character}) Name of column to use for column
+faceting. \code{NULL} by default.}
 
 \item{title}{(\code{character(1)}) Title of the plot. \code{NULL} by default.}
 
