@@ -33,5 +33,16 @@ BREWER_COLORS <- c(
   "#a6cee3",
   "#fb9a99",
   "#984ea3",
-  "#ffff33"
+  "#ffff33",
+  "#8dd3c7",
+  "#ffffb3",
+  "#bebada",
+  "#fb8072",
+  "#80b1d3",
+  "#fdb462",
+  "#b3de69",
+  "#fccde5",
+  "#d9d9d9",
+  "#bc80bd",
+  "#ccebc5"
 )
