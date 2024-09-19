@@ -9,6 +9,7 @@ line_plot(
   x,
   y,
   fill_by = NULL,
+  line_type_by = NULL,
   facet_row = NULL,
   facet_col = NULL,
   title = NULL,
@@ -38,6 +39,10 @@ line_plot(
 \item{fill_by}{(\code{quote} | \code{character}) Name of column to use to fill the
 elements of the plot. If \code{NULL}, the plot will be filled with a single
 color. \code{NULL} by default.`}
+
+\item{line_type_by}{(\code{quote} | \code{character}) Name of column to use to
+differentiate lines styles. If \code{NULL}, the plot will use solid lines for
+all lines. \code{NULL} by default.}
 
 \item{facet_row}{(\code{quote} | \code{character}) Name of column to use for row
 faceting. \code{NULL} by default.}

@@ -9,6 +9,9 @@
 #' @description
 #' Elegant and easy to implement line plots.
 #'
+#' @param line_type_by (`quote` | `character`) Name of column to use to
+#'   differentiate lines styles. If `NULL`, the plot will use solid lines for
+#'   all lines. `NULL` by default.
 #' @param with_points (`logical(1)`) Whether to add points to the plot. `TRUE`
 #'   by default.
 #' @param line_width (`numeric(1)`) Width of the line. `2` by default.
@@ -31,6 +34,7 @@ line_plot <- function(data,
                       x,
                       y,
                       fill_by = NULL,
+                      line_type_by = NULL,
                       facet_row = NULL,
                       facet_col = NULL,
 
@@ -70,9 +74,14 @@ line_plot <- function(data,
     facet_col <- rlang::sym(facet_col)
   }
 
+  if (is_character(line_type_by)) {
+    line_type_by <- rlang::sym(line_type_by)
+  }
+
   x <- rlang::enquo(x)
   y <- rlang::enquo(y)
   fill_by <- rlang::enquo(fill_by)
+  line_type_by <- rlang::enquo(line_type_by)
   facet_row <- rlang::enquo(facet_row)
   facet_col <- rlang::enquo(facet_col)
 
@@ -106,6 +115,10 @@ line_plot <- function(data,
         alpha = alpha
       )
     }
+  }
+
+  if (!rlang::quo_is_null(line_type_by)) {
+    plot <- plot + aes(linetype = !!line_type_by)
   }
 
   return(base_format(
