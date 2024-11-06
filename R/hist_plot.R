@@ -1,8 +1,6 @@
 #' @import ggplot2
-#' @importFrom rlang enquo quo_is_null
 
 #' @include utils.R
-#' @include theme.R
 
 #' @title Histogram plot
 #'
@@ -33,6 +31,7 @@ hist_plot <- function(data,
                       fill_by = NULL,
                       facet_row = NULL,
                       facet_col = NULL,
+                      facet_wrap = NULL,
 
                       title = NULL,
                       x_label = NULL,
@@ -48,49 +47,30 @@ hist_plot <- function(data,
                       alpha = 0.7,
                       with_legend = TRUE,
                       horizontal = FALSE) {
-  if (is_character(x)) {
-    x <- rlang::sym(x)
+  x <- as_symbol(x)
+  fill_by <- as_symbol(fill_by)
+  facet_row <- as_symbol(facet_row)
+  facet_col <- as_symbol(facet_col)
+  facet_wrap <- as_symbol(facet_wrap)
+
+  with_legend <- with_legend & !is.null(fill_by)
+
+  params <- list(bins = bins, alpha = alpha, color = "black")
+  if (is.null(fill_by)) {
+    params$fill <- color
   }
 
-  if (is_character(fill_by)) {
-    fill_by <- rlang::sym(fill_by)
-  }
-
-  if (is_character(facet_row)) {
-    facet_row <- rlang::sym(facet_row)
-  }
-
-  if (is_character(facet_col)) {
-    facet_col <- rlang::sym(facet_col)
-  }
-
-  x <- rlang::enquo(x)
-  fill_by <- rlang::enquo(fill_by)
-  facet_row <- rlang::enquo(facet_row)
-  facet_col <- rlang::enquo(facet_col)
-
-  if (rlang::quo_is_null(fill_by)) {
-    plot <- ggplot(data, aes(x = !!x)) +
-      geom_histogram(
-        bins = bins,
-        color = "black",
-        fill = color,
-        alpha = alpha
-      )
-
-    with_legend <- FALSE
-  } else {
-    plot <- ggplot(data, aes(x = !!x, fill = !!fill_by)) +
-      geom_histogram(bins = bins, alpha = alpha, color = "black")
-  }
+  plot <- ggplot(data, aes(x = !!x, fill = !!fill_by)) +
+    do.call(geom_histogram, params)
 
   return(base_format(
     plot = plot,
     title = title,
     x_label = x_label,
     y_label = y_label,
-    facet_row = !!facet_row,
-    facet_col = !!facet_col,
+    facet_row = facet_row,
+    facet_col = facet_col,
+    facet_wrap = facet_wrap,
     x_angle = x_angle,
     with_legend = with_legend,
     y_breaks_num = y_breaks_num,

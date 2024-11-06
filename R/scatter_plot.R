@@ -1,8 +1,6 @@
 #' @import ggplot2
-#' @importFrom rlang enquo quo_is_null
 
 #' @include utils.R
-#' @include theme.R
 
 #' @title Scatter plot
 #'
@@ -31,6 +29,7 @@ scatter_plot <- function(data,
                          fill_by = NULL,
                          facet_row = NULL,
                          facet_col = NULL,
+                         facet_wrap = NULL,
 
                          title = NULL,
                          x_label = NULL,
@@ -47,55 +46,35 @@ scatter_plot <- function(data,
                          alpha = 1,
                          with_legend = TRUE,
                          horizontal = FALSE) {
-  if (is_character(x)) {
-    x <- rlang::sym(x)
+  x <- as_symbol(x)
+  y <- as_symbol(y)
+  fill_by <- as_symbol(fill_by)
+  facet_row <- as_symbol(facet_row)
+  facet_col <- as_symbol(facet_col)
+  facet_wrap <- as_symbol(facet_wrap)
+
+  with_legend <- with_legend & !is.null(fill_by)
+
+  params <- list(
+    stat = "identity",
+    size = point_size,
+    alpha = alpha
+  )
+  if (is.null(fill_by)) {
+    params$color <- color
   }
 
-  if (is_character(y)) {
-    y <- rlang::sym(y)
-  }
-
-  if (is_character(fill_by)) {
-    fill_by <- rlang::sym(fill_by)
-  }
-
-  if (is_character(facet_row)) {
-    facet_row <- rlang::sym(facet_row)
-  }
-
-  if (is_character(facet_col)) {
-    facet_col <- rlang::sym(facet_col)
-  }
-
-  x <- rlang::enquo(x)
-  y <- rlang::enquo(y)
-  fill_by <- rlang::enquo(fill_by)
-  facet_row <- rlang::enquo(facet_row)
-  facet_col <- rlang::enquo(facet_col)
-
-  if (rlang::quo_is_null(fill_by)) {
-    plot <- ggplot(data, aes(x = !!x, y = !!y)) +
-      geom_point(
-        stat = "identity",
-        size = point_size,
-        color = color,
-        alpha = alpha
-      )
-  } else {
-    plot <- ggplot(
-      data,
-      aes(x = !!x, y = !!y, color = !!fill_by)
-    ) +
-    geom_point(stat = "identity", size = point_size, alpha = alpha)
-  }
+  plot <- ggplot(data, aes(x = !!x, y = !!y, color = !!fill_by)) +
+    do.call(geom_point, params)
 
   return(base_format(
     plot = plot,
     title = title,
     x_label = x_label,
     y_label = y_label,
-    facet_row = !!facet_row,
-    facet_col = !!facet_col,
+    facet_row = facet_row,
+    facet_col = facet_col,
+    facet_wrap = facet_wrap,
     y_breaks_num = y_breaks_num,
     x_breaks_num = x_breaks_num,
     theme = theme,

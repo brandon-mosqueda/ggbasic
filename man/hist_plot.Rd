@@ -11,6 +11,7 @@ hist_plot(
   fill_by = NULL,
   facet_row = NULL,
   facet_col = NULL,
+  facet_wrap = NULL,
   title = NULL,
   x_label = NULL,
   y_label = "count",
@@ -29,18 +30,21 @@ hist_plot(
 \arguments{
 \item{data}{(\code{data.frame}) Data to use for plot.}
 
-\item{x}{(\code{quote} | \code{character}) Name of column to use for x-axis.}
+\item{x}{(\code{character}) Name of column to use for x-axis.}
 
 \item{bins}{(\code{numeric(1)}) Number of bins to use. \code{20} by default.}
 
-\item{fill_by}{(\code{quote} | \code{character}) Name of column to use to fill the
+\item{fill_by}{(\code{character}) Name of column to use to fill the
 elements of the plot. If \code{NULL}, the plot will be filled with a single
 color. \code{NULL} by default.`}
 
-\item{facet_row}{(\code{quote} | \code{character}) Name of column to use for row
+\item{facet_row}{(\code{character}) Name of column to use for row
 faceting. \code{NULL} by default.}
 
-\item{facet_col}{(\code{quote} | \code{character}) Name of column to use for column
+\item{facet_col}{(\code{character}) Name of column to use for column
+faceting. \code{NULL} by default.}
+
+\item{facet_wrap}{(\code{character}) Name of column to use for automatic
 faceting. \code{NULL} by default.}
 
 \item{title}{(\code{character(1)}) Title of the plot. \code{NULL} by default.}
@@ -89,13 +93,13 @@ Elegant and easy to implement histogram plots.
 }
 \examples{
 # For a single variable
-hist_plot(iris, x = Sepal.Length)
+hist_plot(iris, x = "Sepal.Length")
 
 # Desagregated by a categorical variable
-hist_plot(iris, x = Sepal.Width, fill_by = Species)
+hist_plot(iris, x = "Sepal.Width", fill_by = "Species")
 
 # With a facet for each species
-hist_plot(iris, x = Petal.Length, fill_by = Species, facet_row = Species)
+hist_plot(iris, x = "Petal.Length", fill_by = "Species", facet_row = "Species")
 }
 \seealso{
 Other plots: 

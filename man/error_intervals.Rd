@@ -13,10 +13,10 @@ error_intervals(
 )
 }
 \arguments{
-\item{value}{(\code{quote} | \code{character}) Name of column to take the reference
+\item{value}{(\code{character}) Name of column to take the reference
 value for the error intervals.}
 
-\item{standard_error}{(\code{quote} | \code{character}) Name of column to take the
+\item{standard_error}{(\code{character}) Name of column to take the
 standard error for the error intervals.}
 
 \item{margin}{(\code{numeric(1)}) Margin to use for the error intervals. Margin
@@ -36,12 +36,14 @@ A \code{ggplot2::geom_errorbar} object.
 Add error intervals to a plot.
 }
 \examples{
+set.seed(1)
+
 data <- data.frame(
   Letter = LETTERS[seq(5)],
   Value = rnorm(5, 20, 2),
   Value_SE = rnorm(5)
 )
 
-bar_plot(data, Letter, Value, fill_by = Letter) +
-  error_intervals(Value, Value_SE)
+bar_plot(data, "Letter", "Value", fill_by = "Letter") +
+  error_intervals("Value", "Value_SE")
 }

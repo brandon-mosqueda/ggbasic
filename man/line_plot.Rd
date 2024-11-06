@@ -12,6 +12,7 @@ line_plot(
   line_type_by = NULL,
   facet_row = NULL,
   facet_col = NULL,
+  facet_wrap = NULL,
   title = NULL,
   x_label = NULL,
   y_label = NULL,
@@ -32,22 +33,25 @@ line_plot(
 \arguments{
 \item{data}{(\code{data.frame}) Data to use for plot.}
 
-\item{x}{(\code{quote} | \code{character}) Name of column to use for x-axis.}
+\item{x}{(\code{character}) Name of column to use for x-axis.}
 
-\item{y}{(\code{quote} | \code{character}) Name of column to use for y-axis.}
+\item{y}{(\code{character}) Name of column to use for y-axis.}
 
-\item{fill_by}{(\code{quote} | \code{character}) Name of column to use to fill the
+\item{fill_by}{(\code{character}) Name of column to use to fill the
 elements of the plot. If \code{NULL}, the plot will be filled with a single
 color. \code{NULL} by default.`}
 
-\item{line_type_by}{(\code{quote} | \code{character}) Name of column to use to
+\item{line_type_by}{(\code{character}) Name of column to use to
 differentiate lines styles. If \code{NULL}, the plot will use solid lines for
 all lines. \code{NULL} by default.}
 
-\item{facet_row}{(\code{quote} | \code{character}) Name of column to use for row
+\item{facet_row}{(\code{character}) Name of column to use for row
 faceting. \code{NULL} by default.}
 
-\item{facet_col}{(\code{quote} | \code{character}) Name of column to use for column
+\item{facet_col}{(\code{character}) Name of column to use for column
+faceting. \code{NULL} by default.}
+
+\item{facet_wrap}{(\code{character}) Name of column to use for automatic
 faceting. \code{NULL} by default.}
 
 \item{title}{(\code{character(1)}) Title of the plot. \code{NULL} by default.}
@@ -102,13 +106,13 @@ Elegant and easy to implement line plots.
 }
 \examples{
 # Normal line plot
-line_plot(iris, x = Petal.Width, y = Sepal.Length)
+line_plot(iris, x = "Petal.Width", y = "Sepal.Length")
 
 # With different colors for each species
-line_plot(iris, x = Petal.Width, y = Sepal.Length, fill_by = Species)
+line_plot(iris, x = "Petal.Width", y = "Sepal.Length", fill_by = "Species")
 
 # With different row facets for each species
-line_plot(iris, x = Petal.Width, y = Sepal.Length, facet_row = Species)
+line_plot(iris, x = "Petal.Width", y = "Sepal.Length", facet_row = "Species")
 }
 \seealso{
 Other plots: 

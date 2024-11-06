@@ -1,8 +1,10 @@
 #' @param data (`data.frame`) Data to use for plot.
-#' @param x (`quote` | `character`) Name of column to use for x-axis.
-#' @param facet_row (`quote` | `character`) Name of column to use for row
+#' @param x (`character`) Name of column to use for x-axis.
+#' @param facet_row (`character`) Name of column to use for row
 #'   faceting. `NULL` by default.
-#' @param facet_col (`quote` | `character`) Name of column to use for column
+#' @param facet_col (`character`) Name of column to use for column
+#'   faceting. `NULL` by default.
+#' @param facet_wrap (`character`) Name of column to use for automatic
 #'   faceting. `NULL` by default.
 #' @param title (`character(1)`) Title of the plot. `NULL` by default.
 #' @param x_label (`character(1)`) Label for x-axis. `NULL` by default which

@@ -1,8 +1,6 @@
 #' @import ggplot2
-#' @importFrom rlang enquo quo_is_null
 
 #' @include utils.R
-#' @include theme.R
 
 #' @title Bar plot
 #'

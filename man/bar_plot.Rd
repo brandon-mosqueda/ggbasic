@@ -29,19 +29,22 @@ bar_plot(
 \arguments{
 \item{data}{(\code{data.frame}) Data to use for plot.}
 
-\item{x}{(\code{quote} | \code{character}) Name of column to use for x-axis.}
+\item{x}{(\code{character}) Name of column to use for x-axis.}
 
-\item{y}{(\code{quote} | \code{character}) Name of column to use for y-axis. \code{NULL} by
+\item{y}{(\code{character}) Name of column to use for y-axis. \code{NULL} by
 default.}
 
-\item{fill_by}{(\code{quote} | \code{character}) Name of column to use to fill the
+\item{fill_by}{(\code{character}) Name of column to use to fill the
 elements of the plot. If \code{NULL}, the plot will be filled with a single
 color. \code{NULL} by default.`}
 
-\item{facet_row}{(\code{quote} | \code{character}) Name of column to use for row
+\item{facet_row}{(\code{character}) Name of column to use for row
 faceting. \code{NULL} by default.}
 
-\item{facet_col}{(\code{quote} | \code{character}) Name of column to use for column
+\item{facet_col}{(\code{character}) Name of column to use for column
+faceting. \code{NULL} by default.}
+
+\item{facet_wrap}{(\code{character}) Name of column to use for automatic
 faceting. \code{NULL} by default.}
 
 \item{title}{(\code{character(1)}) Title of the plot. \code{NULL} by default.}
@@ -88,24 +91,24 @@ Elegant and easy to implement bar plots.
 }
 \examples{
 # For factor variables, it generates a bar plot with the frequency of each class
-bar_plot(iris, x = Species)
+bar_plot(iris, x = "Species")
 
 # For numeric variables, it generates a histogram
-bar_plot(iris, x = Sepal.Length)
+bar_plot(iris, x = "Sepal.Length")
 
 # It can be used with categorical variables in the x-axis and numeric variables
 # in the y-axis to generate a bar plot
 data <- data.frame(Letter = LETTERS[seq(5)], Value = rnorm(5))
-bar_plot(data, x = Letter, y = Value, fill_by = Letter)
+bar_plot(data, x = "Letter", y = "Value", fill_by = "Letter")
 
 # Easily divide the plot into multiple plots using facet_row and facet_col
 titanic <- as.data.frame(Titanic)
 bar_plot(
   titanic,
-  x = Class,
-  y = Freq,
-  fill_by = Survived,
-  facet_row = Sex,
+  x = "Class",
+  y = "Freq",
+  fill_by = "Survived",
+  facet_row = "Sex",
   title = "Titanic survivors by sex and class"
 )
 }

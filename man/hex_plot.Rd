@@ -11,6 +11,7 @@ hex_plot(
   bins = 30,
   facet_row = NULL,
   facet_col = NULL,
+  facet_wrap = NULL,
   title = NULL,
   x_label = NULL,
   y_label = NULL,
@@ -29,17 +30,20 @@ hex_plot(
 \arguments{
 \item{data}{(\code{data.frame}) Data to use for plot.}
 
-\item{x}{(\code{quote} | \code{character}) Name of column to use for x-axis.}
+\item{x}{(\code{character}) Name of column to use for x-axis.}
 
-\item{y}{(\code{quote} | \code{character}) Name of column to use for y-axis.}
+\item{y}{(\code{character}) Name of column to use for y-axis.}
 
 \item{bins}{(\code{numeric(1)}) Number of bins to use in both vertical and
 horizontal directions. \code{30} by default.}
 
-\item{facet_row}{(\code{quote} | \code{character}) Name of column to use for row
+\item{facet_row}{(\code{character}) Name of column to use for row
 faceting. \code{NULL} by default.}
 
-\item{facet_col}{(\code{quote} | \code{character}) Name of column to use for column
+\item{facet_col}{(\code{character}) Name of column to use for column
+faceting. \code{NULL} by default.}
+
+\item{facet_wrap}{(\code{character}) Name of column to use for automatic
 faceting. \code{NULL} by default.}
 
 \item{title}{(\code{character(1)}) Title of the plot. \code{NULL} by default.}
@@ -90,16 +94,16 @@ Elegant and easy to implement hexagonal binning plots.
 \examples{
 # Like a scatter plot, but with hexagons instead of points to represent the
 # density of points in a given area.
-hex_plot(iris, x = Sepal.Length, y = Petal.Length)
+hex_plot(iris, x = "Sepal.Length", y = "Petal.Length")
 
 # With a facet for each species
-hex_plot(iris, x = Sepal.Length, y = Petal.Length, facet_row = Species)
+hex_plot(iris, x = "Sepal.Length", y = "Petal.Length", facet_row = "Species")
 
 # With custom gradient colors
 hex_plot(
   iris,
-  x = Sepal.Length,
-  y = Petal.Length,
+  x = "Sepal.Length",
+  y = "Petal.Length",
   low_color = "white",
   high_color = "red"
 )

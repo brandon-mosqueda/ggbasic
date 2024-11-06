@@ -1,8 +1,6 @@
 #' @import ggplot2
-#' @importFrom rlang enquo quo_is_null
 
 #' @include utils.R
-#' @include theme.R
 
 #' @title Hexagonal binning plot
 #'
@@ -33,6 +31,7 @@ hex_plot <- function(data,
                      bins = 30,
                      facet_row = NULL,
                      facet_col = NULL,
+                     facet_wrap = NULL,
 
                      title = NULL,
                      x_label = NULL,
@@ -48,26 +47,11 @@ hex_plot <- function(data,
                      alpha = 1,
                      with_legend = TRUE,
                      horizontal = FALSE) {
-  if (is_character(x)) {
-    x <- rlang::sym(x)
-  }
-
-  if (is_character(y)) {
-    y <- rlang::sym(y)
-  }
-
-  if (is_character(facet_row)) {
-    facet_row <- rlang::sym(facet_row)
-  }
-
-  if (is_character(facet_col)) {
-    facet_col <- rlang::sym(facet_col)
-  }
-
-  x <- rlang::enquo(x)
-  y <- rlang::enquo(y)
-  facet_row <- rlang::enquo(facet_row)
-  facet_col <- rlang::enquo(facet_col)
+  x <- as_symbol(x)
+  y <- as_symbol(y)
+  facet_row <- as_symbol(facet_row)
+  facet_col <- as_symbol(facet_col)
+  facet_wrap <- as_symbol(facet_wrap)
 
   plot <- ggplot(data, aes(x = !!x, y = !!y)) +
     geom_hex(bins = bins, alpha = alpha) +
@@ -78,8 +62,9 @@ hex_plot <- function(data,
     title = title,
     x_label = x_label,
     y_label = y_label,
-    facet_row = !!facet_row,
-    facet_col = !!facet_col,
+    facet_row = facet_row,
+    facet_col = facet_col,
+    facet_wrap = facet_wrap,
     y_breaks_num = y_breaks_num,
     x_breaks_num = x_breaks_num,
     theme = theme,
