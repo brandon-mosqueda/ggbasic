@@ -11,6 +11,7 @@ bar_plot(
   fill_by = NULL,
   facet_row = NULL,
   facet_col = NULL,
+  facet_wrap = NULL,
   title = NULL,
   x_label = NULL,
   y_label = NULL,

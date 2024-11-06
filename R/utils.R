@@ -26,6 +26,7 @@ gglabels <- function(plot, title = NULL, x_label = NULL, y_label = NULL) {
 base_format <- function(plot,
                         facet_row,
                         facet_col,
+                        facet_wrap,
                         title,
                         x_label,
                         y_label,
@@ -37,15 +38,16 @@ base_format <- function(plot,
                         x_angle,
                         with_legend,
                         horizontal) {
-  facet_row <- rlang::enquo(facet_row)
-  facet_col <- rlang::enquo(facet_col)
-
   plot <- gglabels(plot, title = title, x_label = x_label, y_label = y_label)
 
-  plot <- plot + facet_grid(
-    rows = vars(!!facet_row),
-    cols = vars(!!facet_col)
-  )
+  if (is.null(facet_wrap)) {
+    plot <- plot + facet_grid(
+      rows = vars(!!facet_row),
+      cols = vars(!!facet_col)
+    )
+  } else {
+    plot <- plot + ggplot2::facet_wrap(vars(!!facet_wrap))
+  }
 
   if (!is.null(y_breaks_num)) {
     plot <- plot + scale_y_continuous(n.breaks = y_breaks_num)
@@ -130,6 +132,10 @@ error_intervals <- function(value,
   ))
 }
 
-is_character <- function(x) {
-  tryCatch({is.character(x)}, error = function(e) FALSE)
+as_symbol <- function(x) {
+  if (is.null(x)) {
+    return(NULL)
+  }
+
+  return(rlang::ensym(x))
 }
