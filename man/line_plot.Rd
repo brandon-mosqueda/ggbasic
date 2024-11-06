@@ -31,8 +31,6 @@ line_plot(
 )
 }
 \arguments{
-\item{data}{(\code{data.frame}) Data to use for plot.}
-
 \item{x}{(\code{character}) Name of column to use for x-axis.}
 
 \item{y}{(\code{character}) Name of column to use for y-axis.}
@@ -74,8 +72,8 @@ used if \code{fill_by} is not \code{NULL}. \code{BREWER_COLORS} by default.}
 \item{line_width}{(\code{numeric(1)}) Width of the line. \code{2} by default.}
 
 \item{theme}{(\code{character(1)}) Theme to use for the plot. The options are:
-\code{"light"},  \code{"dark_grey"}, \code{"dark_blue"} and \code{"transparent"}. \code{light} by
-default.}
+\code{"light"},  \code{"dark_grey"}, \code{"dark_blue"}, \code{"transparent"} and \code{"paper"}.
+\code{light} by default.}
 
 \item{y_breaks_num}{(\code{numeric(1)}) Number of breaks to use for y-axis. \code{10}
 by default.}

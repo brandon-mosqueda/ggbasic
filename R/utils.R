@@ -66,7 +66,8 @@ base_format <- function(plot,
     light = theme_publication,
     transparent = theme_transparent,
     dark_grey = theme_dark_grey,
-    dark_blue = theme_dark_blue
+    dark_blue = theme_dark_blue,
+    paper = theme_paper
   )
   plot <- theme_function(plot, font_size = font_size, fill_colors = fill_colors)
 

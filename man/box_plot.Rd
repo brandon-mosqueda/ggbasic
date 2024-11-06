@@ -26,8 +26,6 @@ box_plot(
 )
 }
 \arguments{
-\item{data}{(\code{data.frame}) Data to use for plot.}
-
 \item{x}{(\code{character}) Name of column to use for x-axis.}
 
 \item{y}{(\code{character}) Name of column to use for y-axis. \code{NULL} by
@@ -63,8 +61,8 @@ used if \code{fill_by} is not \code{NULL}. \code{BREWER_COLORS} by default.}
 \item{outlier_size}{(\code{numeric(1)}) Size to use for outliers. \code{5} by default.}
 
 \item{theme}{(\code{character(1)}) Theme to use for the plot. The options are:
-\code{"light"},  \code{"dark_grey"}, \code{"dark_blue"} and \code{"transparent"}. \code{light} by
-default.}
+\code{"light"},  \code{"dark_grey"}, \code{"dark_blue"}, \code{"transparent"} and \code{"paper"}.
+\code{light} by default.}
 
 \item{font_size}{(\code{numeric(1)}) Font size to use for the plot. \code{15} by
 default.}

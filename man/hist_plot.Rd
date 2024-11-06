@@ -28,8 +28,6 @@ hist_plot(
 )
 }
 \arguments{
-\item{data}{(\code{data.frame}) Data to use for plot.}
-
 \item{x}{(\code{character}) Name of column to use for x-axis.}
 
 \item{bins}{(\code{numeric(1)}) Number of bins to use. \code{20} by default.}
@@ -61,8 +59,8 @@ uses the name provided in \code{x}.}
 used if \code{fill_by} is not \code{NULL}. \code{BREWER_COLORS} by default.}
 
 \item{theme}{(\code{character(1)}) Theme to use for the plot. The options are:
-\code{"light"},  \code{"dark_grey"}, \code{"dark_blue"} and \code{"transparent"}. \code{light} by
-default.}
+\code{"light"},  \code{"dark_grey"}, \code{"dark_blue"}, \code{"transparent"} and \code{"paper"}.
+\code{light} by default.}
 
 \item{x_breaks_num}{(\code{numeric(1)}) Number of breaks to use for x-axis. \code{10}
 by default.}

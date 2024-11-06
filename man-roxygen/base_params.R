@@ -1,4 +1,4 @@
-#' @param data (`data.frame`) Data to use for plot.
+j#' @param data (`data.frame`) Data to use for plot.
 #' @param x (`character`) Name of column to use for x-axis.
 #' @param facet_row (`character`) Name of column to use for row
 #'   faceting. `NULL` by default.
@@ -12,8 +12,8 @@
 #' @param y_label (`character(1)`) Label for y-axis. `NULL` by default which
 #'   uses the name provided in `y`.
 #' @param theme (`character(1)`) Theme to use for the plot. The options are:
-#'   `"light"`,  `"dark_grey"`, `"dark_blue"` and `"transparent"`. `light` by
-#'   default.
+#'   `"light"`,  `"dark_grey"`, `"dark_blue"`, `"transparent"` and `"paper"`.
+#'   `light` by default.
 #' @param font_size (`numeric(1)`) Font size to use for the plot. `15` by
 #'  default.
 #' @param x_angle (`numeric(1)`) Angle to use for x-axis labels. `0`

@@ -9,6 +9,51 @@
 # Adapted from @koundy on GitHub
 # https://github.com/koundy/ggplot_theme_Publication
 
+base_theme_paper <- function(font_size = 14, font_family = "sans") {
+  return(
+    ggthemes::theme_foundation(
+      base_size = font_size,
+      base_family = font_family
+    ) +
+      theme(
+        plot.title = element_text(
+          face = "bold",
+          size = rel(1.2),
+          hjust = 0.5,
+          margin = margin(0, 0, 20, 0)
+        ),
+        text = element_text(),
+        panel.background = element_rect(colour = NA),
+        plot.background = element_rect(colour = NA),
+        panel.border = element_rect(colour = "black"),
+        axis.title = element_text(size = rel(1), face = "plain"),
+        axis.title.y = element_text(angle = 90, vjust = 2, face = "plain"),
+        axis.title.x = element_text(vjust = -0.2),
+        axis.text = element_text(),
+
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        legend.key = element_rect(colour = NA),
+        legend.position = "bottom",
+        legend.direction = "horizontal",
+        legend.box = "vetical",
+        legend.key.size = grid::unit(10, "pt"),
+        legend.margin = margin(t = 15),
+        legend.title = element_text(
+          face = "italic",
+          size = font_size,
+          margin = margin(r = 15)
+        ),
+        plot.margin = margin(5, 5, 5, 5),
+        strip.background = element_rect(colour = "#cacaca", fill = "#cacaca"),
+        strip.text = element_text(face = "bold")
+      )
+  )
+}
+
+# Adapted from @koundy on GitHub
+# https://github.com/koundy/ggplot_theme_Publication
+
 base_theme_publication <- function(font_size = 14, font_family = "sans") {
   return(
     ggthemes::theme_foundation(
@@ -270,6 +315,23 @@ theme_dark_blue <- function(plot,
                             fill_colors = BREWER_COLORS) {
   plot <- plot +
     base_theme_dark_blue(font_size = font_size, font_family = font_family)
+
+  if (!is.null(fill_colors)) {
+    plot <- plot +
+      scale_fill_publication(fill_colors) +
+      scale_colour_publication(fill_colors)
+  }
+
+  return(plot)
+}
+
+#' @export
+theme_paper <- function(plot,
+                        font_size = 14,
+                        font_family = "sans",
+                        fill_colors = BREWER_COLORS) {
+  plot <- plot +
+    base_theme_paper(font_size = font_size, font_family = font_family)
 
   if (!is.null(fill_colors)) {
     plot <- plot +
